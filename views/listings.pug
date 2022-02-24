@@ -1,0 +1,44 @@
+html 
+    head
+        title List Users
+    body 
+        h1 User Listings
+        a(href=`/createUser` ) Create User
+        a(href=`/userListing`) User Listings
+        a(href='/search') Search
+
+        p Sort Options 
+        span First Name
+        a(href=`/userListing/firstName/1`) Ascending
+        a(href=`/userListing/firstName/-1`) Descending 
+        br
+        span Last Name
+        a(href=`/userListing/lastName/1`) Ascending
+        a(href=`/userListing/lastName/-1`) Descending
+        br
+        span Age
+        a(href=`/userListing/age/1`) Ascending
+        a(href=`/userListing/age/-1`) Descending
+
+        
+        table  
+            tr 
+                th First Name
+                th Last Name
+                th Email 
+                th Age
+            each entry in userArray 
+                tr
+                    td= entry.firstName
+                    td= entry.lastName
+                    td= entry.email
+                    td= entry.age
+                    td  
+                        form(action=`/editUser/${entry._id}` method="get") 
+                            input(type="submit" value="Edit")
+                    td  
+                        form(action=`/deleteUser/${entry._id}` method='post')
+                            input(type='submit' value="Delete")
+
+                    
+                
